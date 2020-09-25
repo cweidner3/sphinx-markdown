@@ -36,5 +36,5 @@ markdown_extensions = ['gfm']  # Github Flavored Markdown (pip install py-gfm)
 
 ```rst
 .. markdown-ingest::
-    filename: README.md
+   :filename: README.md
 ```

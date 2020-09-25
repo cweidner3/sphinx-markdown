@@ -7,6 +7,7 @@ import re
 from docutils import nodes
 
 from sphinx_markdown.nodes import MarkdownNode
+from sphinx_markdown.support import file_write
 
 
 def handle_page_context_html(app, pagename_, templatename_, context, doctree):
@@ -44,5 +45,4 @@ def handle_page_context_html(app, pagename_, templatename_, context, doctree):
     nodetext = re.sub(r'<[^<]+?>', '', nodetext)
     nodetext = re.sub(r'&[^ ;]+?;', '', nodetext)
     encoding = context.get('encoding', 'utf-8')
-    with open(outname, 'w') as writer:
-        writer.write(nodetext.encode(encoding, 'ignore'))
+    file_write(outname, nodetext, encoding)

@@ -1,17 +1,15 @@
 
 import sys
 
-def file_readline(filepath):
+def file_read(filepath):
     '''
     :param filepath (str): Path to file to read.
     :returns: Contents of file as string.
     '''
     with open(filepath) as handle:
+        data = handle.read()
         if sys.version_info.major == 2:
-            data = handle.readline()
             data = unicode(data.decode('utf-8'))
-        else:
-            data = handle.read()
     return data
 
 def file_write(filepath, text, encoding):

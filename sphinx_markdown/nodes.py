@@ -5,7 +5,7 @@ from docutils import nodes
 import markdown
 
 from sphinx_markdown.extensions.images import StaticImagesExtension
-from sphinx_markdown.support import file_readline
+from sphinx_markdown.support import file_read
 
 
 class MarkdownNode(nodes.raw, nodes.Element):
@@ -18,7 +18,7 @@ class MarkdownNode(nodes.raw, nodes.Element):
     def load_markdown(self):
         """Save the markdown contents to this node
         """
-        text = file_readline(self.filename)
+        text = file_read(self.filename)
         static_dir = os.path.relpath('_static',
                                      start=os.path.dirname(self.filename))
         sphinx_md_ext = StaticImagesExtension(static_dir=static_dir)
